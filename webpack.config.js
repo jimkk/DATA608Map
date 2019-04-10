@@ -37,7 +37,7 @@ const CONFIG = {
   // Optional: Enables reading mapbox token from environment variable
   plugins: [
     new webpack.EnvironmentPlugin(['MapboxAccessToken']),
-    new HtmlWebpackPlugin({title: 'deck.gl example'})
+    new HtmlWebpackPlugin({title: 'DATA 608 Trip Count 2018'})
   ]
 };
 
