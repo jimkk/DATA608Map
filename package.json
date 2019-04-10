@@ -4,7 +4,7 @@
   "license": "MIT",
   "scripts": {
     "start-local": "webpack-dev-server --env.local --progress --hot --open",
-    "start": "webpack-dev-server --progress --hot --open",
+    "start": "webpack-dev-server --progress --hot --open --host 0.0.0.0",
     "build": "webpack -p"
   },
   "dependencies": {
