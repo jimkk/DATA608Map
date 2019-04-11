@@ -16,7 +16,7 @@ const STATIONS =
 const INITIAL_VIEW_STATE = {
   latitude: 40.71,
   longitude: -73.99,
-  zoom: 11,
+  zoom: 11.5,
   bearing: 0,
   pitch: 60
 };
