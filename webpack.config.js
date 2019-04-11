@@ -7,7 +7,11 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const CONFIG = {
   entry: {
-    app: './app.js'
+    main: './app.js',
+    app: './app.js',
+    app2017: './app2017.js',
+    app2016: './app2016.js',
+    app2015: './app2015.js'
   },
 
   devtool: 'source-map',

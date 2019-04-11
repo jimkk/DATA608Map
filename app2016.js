@@ -9,7 +9,7 @@ const MAPBOX_TOKEN = process.env.MapboxAccessToken; // eslint-disable-line
 
 // source: Natural Earth http://www.naturalearthdata.com/ via geojson.xyz
 const STATIONS =
-'https://raw.githubusercontent.com/jimkk/DATA608Map_Data/master/trips_per_year.geojson';
+'https://raw.githubusercontent.com/jimkk/DATA608Map_Data/master/trips_per_year_2016.geojson';
 // 'trips_per_year.geojson';
 
 const INITIAL_VIEW_STATE = {
@@ -148,4 +148,16 @@ class Root extends Component {
   }
 }
 
+// function Index(){
+//   console.log("in index");
+// export default Root;
 render(<Root />, document.body.appendChild(document.createElement('div')));
+console.log(this);
+// }
+{/* <BrowserRouter>
+  <Route exact path="/" component={Root}></Route>
+  <Route path="/Home" component={Root}></Route>
+</BrowserRouter> */}
+// console.log(this.props.location.search);
+/* global document */
+// export default App;
