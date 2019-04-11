@@ -10,8 +10,8 @@ const MAPBOX_TOKEN = process.env.MapboxAccessToken; // eslint-disable-line
 
 // source: Natural Earth http://www.naturalearthdata.com/ via geojson.xyz
 const STATIONS =
-'trips_per_year.geojson';
-// 'https://raw.githubusercontent.com/jimkk/DATA608Map_Data/master/trips_per_year.geojson';
+'https://raw.githubusercontent.com/jimkk/DATA608Map_Data/master/trips_per_year.geojson';
+// 'trips_per_year.geojson';
 
 const INITIAL_VIEW_STATE = {
   latitude: 40.71,
