@@ -18,7 +18,7 @@ const INITIAL_VIEW_STATE = {
   longitude: -73.99,
   zoom: 11,
   bearing: 0,
-  pitch: 30
+  pitch: 60
 };
 
 export const COLOR_SCALE = scaleThreshold()
@@ -51,11 +51,64 @@ const COLORS = [
   [250, 0, 38]
 ];
 
+const elevationScale = {min: 0, max: 5};
+
 class Root extends Component {
   _onClick(info) {
     if (info.object) {
       // eslint-disable-next-line
       alert(`Station ID: ${info.object.properties.name}, Count: (${info.object.properties.count})`);
+    }
+  }
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      elevationScale: elevationScale.min
+    };
+
+    this.startAnimationTimer = null;
+    this.intervalTimer = null;
+
+    this._startAnimate = this._startAnimate.bind(this);
+    this._animateHeight = this._animateHeight.bind(this);
+  }
+
+  componentDidMount() {
+    this._animate();
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.data && this.props.data && nextProps.data.length !== this.props.data.length) {
+      this._animate();
+    }
+  }
+
+  componentWillUnmount() {
+    this._stopAnimate();
+  }
+
+  _animate() {
+    this._stopAnimate();
+
+    // wait 1.5 secs to start animation so that all data are loaded
+    this.startAnimationTimer = window.setTimeout(this._startAnimate, 3000);
+  }
+
+  _startAnimate() {
+    this.intervalTimer = window.setInterval(this._animateHeight, 50);
+  }
+
+  _stopAnimate() {
+    window.clearTimeout(this.startAnimationTimer);
+    window.clearTimeout(this.intervalTimer);
+  }
+
+  _animateHeight() {
+    if (this.state.elevationScale >= elevationScale.max) {
+      this._stopAnimate();
+    } else {
+      this.setState({elevationScale: this.state.elevationScale + 0.1});
     }
   }
 
@@ -70,7 +123,9 @@ class Root extends Component {
         wireframe: false,
         fp64: true,
         opacity: 1,
-        getElevation: f => f.properties.count / 100,
+        // elevationRange: f => [0, f.properties.count / 1000],
+        elevationScale: this.state.elevationScale,
+        getElevation: f => f.properties.count / 200,
         getFillColor: f => COLOR_SCALE(f.properties.count),
         // Interactive props
         pickable: true,
