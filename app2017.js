@@ -126,7 +126,7 @@ class Root extends Component {
         // Styles
         filled: true,
         extruded: true,
-        wireframe: false,
+        wireframe: true,
         fp64: true,
         opacity: 1,
         // elevationRange: f => [0, f.properties.count / 1000],
